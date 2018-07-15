@@ -11,5 +11,7 @@ describe('PageFourService', () => {
 
   it('should be created', inject([PageFourService], (service: PageFourService) => {
     expect(service).toBeTruthy();
+    expect(service.listenMessage).toBeTruthy();
+    expect(service.sendMessage).toBeTruthy();
   }));
 });

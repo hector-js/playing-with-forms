@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   {
+    path: '',
+    loadChildren: 'modules/page-one/page-one.module#PageOneModule'
+  },
+  {
     path: 'page-one',
     loadChildren: 'modules/page-one/page-one.module#PageOneModule'
   },

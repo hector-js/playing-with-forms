@@ -1,3 +1,19 @@
-<fieldset class="height">
-  <legend data-qa="pageTwo">PAGE TWO</legend>
+<fieldset>
+  <legend data-qa="personal-details-legend">Personal details</legend>
+  <app-name-input (eventForm)="getForm($event)"></app-name-input>
+  <app-last-name-input (eventForm)="getForm($event)"></app-last-name-input>
+  <app-email-input (eventForm)="getForm($event)"></app-email-input>
 </fieldset>
+<h1>
+  {{value}}
+</h1>
+
+<div class="btn-group center-element">
+  <button type="button" name="back" (click)="onBack()" class="btn btn-default btn-sm">Back</button>
+  <button type="button" name="next" (click)="onClick()" class="btn btn-primary btn-sm">Continue</button>
+</div>
+
+<h1>
+  DETAILS FORM
+  {{formArray.valid}}
+  </h1>

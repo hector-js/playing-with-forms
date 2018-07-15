@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import { MessageProducer } from '../../message-producer';
 
 @Injectable()
-export class PageOneService {
+export class PageOneService extends MessageProducer {
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 }

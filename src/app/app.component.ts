@@ -1,56 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavigationService } from '../modules/navigation';
+import { AppNavigationService } from './service/app-navigation/app-navigation.service';
+import { EventsSubscriber } from '../modules/message-producer';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   public nextPage: string;
+  title = 'PLAYING WITH FORMS';
 
-  constructor(public router: Router) {
-
+  constructor(public router: Router,
+  public appNavigationService: AppNavigationService) {
   }
-
-  title = 'PLAYING WITH MODULES';
-  onContinue() {
-    switch (this.nextPage) {
-      case '/page-one':
-        this.nextPage = '/page-two';
-        break;
-      case '/page-two':
-        this.nextPage = '/page-three';
-        break;
-      case '/page-three':
-        this.nextPage = '/page-four';
-        break;
-      case '/page-four':
-        this.nextPage = '/page-one';
-        break;
-      default:
-        this.nextPage = '/page-one';
-    }
-    this.router.navigate([this.nextPage]);
-  }
-  onBack() {
-    switch (this.nextPage) {
-      case '/page-one':
-        this.nextPage = '/page-four';
-        break;
-      case '/page-two':
-        this.nextPage = '/page-one';
-        break;
-      case '/page-three':
-        this.nextPage = '/page-two';
-        break;
-      case '/page-four':
-        this.nextPage = '/page-three';
-        break;
-      default:
-        this.nextPage = '/page-one';
-    }
-    this.router.navigate([this.nextPage]);
+  ngOnInit() {
+    this.appNavigationService.subscribeToEvents();
   }
 }

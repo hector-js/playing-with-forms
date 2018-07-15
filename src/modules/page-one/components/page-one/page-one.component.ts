@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageOneService } from '../../service/page-one.service';
 
 @Component({
   selector: 'app-page-one',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageOneComponent implements OnInit {
 
-  constructor() { }
+  constructor(public pageOneService: PageOneService) { }
 
   ngOnInit() {
   }
+
+  onClick() {
+    this.pageOneService.sendMessage('continue');
+  }
+
+  onBack() {
+    this.pageOneService.sendMessage('back');
+  }
+
 
 }
