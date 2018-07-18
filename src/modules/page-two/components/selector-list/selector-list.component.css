@@ -1,0 +1,22 @@
+.borderItem {
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    text-align: center;
+    float: inherit;
+    background: white;
+}
+
+.pointer {
+    cursor: pointer;
+}
+.pointer:hover {
+    background: grey;
+    color: white;
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+}
+
+.position {
+    position: absolute;
+    width: 1110px;
+}

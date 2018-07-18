@@ -1,5 +1,6 @@
 <fieldset>
   <legend data-qa="personal-details-legend">Personal details</legend>
+  <app-selector-list (eventForm)="getForm($event)"></app-selector-list>
   <app-name-input (eventForm)="getForm($event)"></app-name-input>
   <app-last-name-input (eventForm)="getForm($event)"></app-last-name-input>
   <app-email-input (eventForm)="getForm($event)"></app-email-input>
