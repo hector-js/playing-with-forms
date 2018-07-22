@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavigationService } from '../modules/navigation';
+
 import { AppNavigationService } from './service/app-navigation/app-navigation.service';
-import { EventsSubscriber } from '../modules/message-producer';
 
 @Component({
   selector: 'app-root',

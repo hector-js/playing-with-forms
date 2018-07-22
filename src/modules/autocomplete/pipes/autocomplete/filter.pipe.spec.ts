@@ -1,8 +1,8 @@
-import { AutocompletePipe } from './autocomplete.pipe';
+import { Filter } from './filter.pipe';
 
 describe('AutocompletePipe', () => {
   it('create an instance', () => {
-    const pipe = new AutocompletePipe();
+    const pipe = new Filter();
     expect(pipe).toBeTruthy();
   });
 });

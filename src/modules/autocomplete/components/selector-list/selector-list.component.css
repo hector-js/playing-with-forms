@@ -1,0 +1,42 @@
+
+ @keyframes slideDown {
+    0% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+.borderItem {
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    text-align: center;
+    float: inherit;
+    background: white;
+}
+
+.pointer {
+    cursor: pointer;
+}
+.pointer:hover {
+    background: grey;
+    color: white;
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+}
+
+.selected{
+    background: grey;
+    color: white;
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+}
+.father > div.position {
+    margin: 0;
+    width: 100%;
+    overflow-y: auto;
+    list-style-type: none;
+    padding: 0;
+    box-sizing: border-box;
+    animation: slideDown 0.5s;
+}

@@ -31,7 +31,7 @@ fdescribe('PageTwoComponent', () => {
   });
 
   it('should contains a form', () => {
-    expect(component.detailsForm instanceof FormGroup).toBeTruthy();
+    expect(component.form instanceof FormGroup).toBeTruthy();
     expect(component.detailsForm.controls.name).toBeTruthy();
     expect(component.detailsForm.controls.lastName).toBeTruthy();
     expect(component.detailsForm.controls.email).toBeTruthy();

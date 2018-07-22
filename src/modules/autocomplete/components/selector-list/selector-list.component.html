@@ -1,0 +1,21 @@
+<div [formGroup]="form">
+  <div #itemsContainer class="form-group col-xs-3 father">
+    <ng-content select=".first"></ng-content>
+    <input type="text" id="additional_YES" formControlName="autocomplete" class="form-control" (keyup)="keyup($event)" (blur)="blurHandler($event)">
+    <div   *ngIf="displayList" class="position" >
+      <div *ngFor="let item of arrayItems | filter:element; let i=index">
+        <div appDetectClick #childContainer id="itemDisplayed" [ngClass]="{selected: i === itemFocused}" class="borderItem pointer form-control" (mousedown)="selectValue(item.value)">
+          {{item.value}}
+        </div>
+      </div>
+    </div>
+    <div *ngIf="autocomplete.invalid && (autocomplete.dirty || autocomplete.touched)&&!displayList" class="alert alert-danger">
+      <small *ngIf="autocomplete.errors.required" data-qa="error-message-autocomplete">
+        <ng-content select=".errorMessage"></ng-content>
+      </small>
+      <small *ngIf="!autocomplete.errors.required&&autocomplete.errors.existOn" data-qa="error-message-autocomplete">
+        <ng-content select=".errorMessageExistOn"></ng-content>
+      </small>
+    </div>
+  </div>
+</div>
