@@ -1,4 +1,4 @@
-PLAYING WITH MODULES
+PLAYING WITH FORMS
 =================
 The title describes the project  by itself, *playing with modules* in Angular *6* for a *multi page* application!! :)
 
