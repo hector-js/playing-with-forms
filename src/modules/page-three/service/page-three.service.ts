@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+
 import { MessageProducer } from '../../message-producer';
+import { PageThree } from '../utilities/models/page-three';
 
 @Injectable()
 export class PageThreeService extends MessageProducer {
 
-  public observable: Observable<string>;
-
+  pageThree: PageThree;
   constructor() {
     super();
-   }
+    this.pageThree = new PageThree();
+  }
 }
+

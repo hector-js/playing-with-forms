@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BaseForm } from '../../../forms';
+import { Name } from '../../utilities/model/name';
 
 
 @Component({
@@ -10,16 +11,26 @@ import { BaseForm } from '../../../forms';
 })
 export class NameInputComponent extends BaseForm implements OnInit {
 
+  @Input() model: Name;
+
   constructor(public fb: FormBuilder) {
     super();
   }
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['', Validators.required]
+      name: [this.model.name, Validators.required]
     });
 
     this.sendEventsUp();
+  }
+
+  emitValidation() {
+    this.validation.emit(this.form.valid);
+  }
+
+  updateModel() {
+    this.model.name = this.form.controls.name.value as string;
   }
 
   get name() { return this.form.get('name'); }

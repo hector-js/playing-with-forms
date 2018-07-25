@@ -9,7 +9,7 @@ export class MessageProducer {
   }
 
   listenMessage(): Observable<{}> {
-    return this.messageSubject;
+    return this.messageSubject.asObservable();
   }
 
 }

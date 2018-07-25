@@ -1,7 +1,7 @@
 <fieldset>
   <legend data-qa="pageThree">PAGE THREE</legend>
   <h2>Tell us something about you</h2>
-  <app-selector-list (eventForm)="getForm($event)" [itemsToDisplay]="itemsToDisplay">
+  <app-selector-list (validation)="isAutocompleteValid($event)" [model]="autocomplete" [itemsToDisplay]="itemsToDisplay">
     <label for="autocomplete" class="first">Which is your favourite city?</label>
     <span class="errorMessage">This field is required</span>
     <span class="errorMessageExistOn">The city must be in the list</span>

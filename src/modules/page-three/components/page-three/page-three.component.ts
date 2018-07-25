@@ -1,38 +1,32 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
-import { BaseParentForm } from '../../../forms';
 import { PageThreeService } from '../../service/page-three.service';
 import { CITIES } from '../../utilities/data/cities';
+import { Autocomplete } from '../../utilities/models/autocomplete';
 
 @Component({
   selector: 'app-page-three',
   templateUrl: './page-three.component.html',
   styleUrls: ['./page-three.component.css']
 })
-export class PageThreeComponent extends BaseParentForm implements OnInit, OnDestroy {
+export class PageThreeComponent  implements OnInit {
 
 
   errorForm: boolean;
-  subscriptionChanges: Subscription;
   itemsToDisplay = CITIES;
+  autocomplete: Autocomplete;
+  autocompleteValidation: boolean;
 
-  constructor(
-    public pageThreeService: PageThreeService,
-    public fb: FormBuilder
-  ) { super(fb); }
+  constructor(public pageThreeService: PageThreeService) {
+  }
 
   ngOnInit() {
-    this.subscriptionChanges = this.formArray.valueChanges.subscribe(() => {
-      if (this.errorForm && this.formArray.valid) {
-        this.errorForm = false;
-      }
-    });
+    this.autocomplete = this.pageThreeService.pageThree.autocomplete;
+
   }
 
   onClick() {
-    if (this.formArray.valid) {
+    if (this.autocompleteValidation) {
       this.pageThreeService.sendMessage('continue');
     } else {
       this.errorForm = true;
@@ -43,7 +37,8 @@ export class PageThreeComponent extends BaseParentForm implements OnInit, OnDest
     this.pageThreeService.sendMessage('back');
   }
 
-  ngOnDestroy() {
-    this.subscriptionChanges.unsubscribe();
+  isAutocompleteValid($event) {
+    this.autocompleteValidation = $event;
   }
+
 }

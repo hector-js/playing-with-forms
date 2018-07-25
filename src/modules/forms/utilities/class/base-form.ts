@@ -2,21 +2,26 @@ import { EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-export class BaseForm implements OnDestroy {
+export abstract class BaseForm implements OnDestroy {
 
     form: FormGroup;
     subscription: Subscription;
 
-    @Output() eventForm: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+    @Output() validation: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     sendEventsUp() {
-        this.eventForm.emit(this.form);
+        this.updateModel();
+        this.emitValidation();
         this.subscription = this.form.valueChanges.subscribe(() => {
-            this.eventForm.emit(this.form);
+            this.updateModel();
+            this.emitValidation();
         });
     }
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
+
+    abstract emitValidation();
+    abstract updateModel();
 }

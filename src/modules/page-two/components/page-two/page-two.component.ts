@@ -2,38 +2,47 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { BaseParentForm } from '../../../forms';
 import { PageTwoService } from '../../service/page-two.service';
 import { CITIES } from '../../utilities/data/cities';
+import { Emails } from '../../utilities/model/emails';
+import { Name } from '../../utilities/model/name';
+import { LastName } from '../../utilities/model/last-name';
+import { Autocomplete } from '../../utilities/model/autocomplete';
 
 @Component({
   selector: 'app-page-two',
   templateUrl: './page-two.component.html',
   styleUrls: ['./page-two.component.css']
 })
-export class PageTwoComponent extends BaseParentForm implements OnInit, OnDestroy {
+export class PageTwoComponent implements OnInit {
 
   itemsToDisplay = CITIES;
-  subscriptionChanges: Subscription;
   errorForm: boolean;
+  nameValidation: boolean;
+  lastNameValidation: boolean;
+  emailsValidation: boolean;
+  autocompleteValidation: boolean;
 
-  constructor(public fb: FormBuilder, public pageTwoService: PageTwoService) {
-    super(fb);
+  name: Name;
+  lastName: LastName;
+  emails: Emails;
+  autocomplete: Autocomplete;
+
+  constructor(public pageTwoService: PageTwoService) {
   }
 
   ngOnInit() {
-    this.subscriptionChanges = this.formArray.valueChanges.subscribe(() => {
-      if (this.errorForm && this.formArray.valid) {
-        this.errorForm = false;
-      }
-    });
+    this.name = this.pageTwoService.pageTwo.name;
+    this.lastName = this.pageTwoService.pageTwo.lastName;
+    this.emails = this.pageTwoService.pageTwo.emails;
+    this.autocomplete = this.pageTwoService.pageTwo.autcomplete;
   }
 
   onClick() {
-    if (this.formArray.valid) {
+    if (this.nameValidation && this.lastNameValidation
+      && this.emailsValidation && this.isAutocompleteValid) {
       this.pageTwoService.sendMessage('continue');
     } else {
-      this.formArray.updateValueAndValidity();
       this.errorForm = true;
     }
   }
@@ -42,8 +51,21 @@ export class PageTwoComponent extends BaseParentForm implements OnInit, OnDestro
     this.pageTwoService.sendMessage('back');
   }
 
-  ngOnDestroy() {
-    this.subscriptionChanges.unsubscribe();
+  isNameValid($event) {
+    this.nameValidation = $event;
   }
+
+  isLastNameValid($event) {
+    this.lastNameValidation = $event;
+  }
+
+  areEmailsValids($event) {
+    this.emailsValidation = $event;
+  }
+
+  isAutocompleteValid($event) {
+    this.autocompleteValidation = $event;
+  }
+
 
 }

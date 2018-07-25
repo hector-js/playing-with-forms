@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { BaseForm } from '../../../forms';
+import { Autocomplete } from '../../../page-three/utilities/models/autocomplete';
 
 @Component({
   selector: 'app-selector-list',
@@ -15,6 +16,7 @@ export class SelectorListComponent extends BaseForm implements OnInit {
   numberOfItems = 0 ;
 
   @Input() itemsToDisplay;
+  @Input() model: Autocomplete;
   @ViewChild('itemsContainer') public itemsContainer: ElementRef;
 
   arrayItems = [];
@@ -26,7 +28,7 @@ export class SelectorListComponent extends BaseForm implements OnInit {
   ngOnInit() {
     this.arrayItems.push(...this.itemsToDisplay);
     this.form = this.fb.group({
-      autocomplete: ['', [Validators.required, existOn(this.arrayItems)]]
+      autocomplete: [this.model.autocomplete ? this.model.autocomplete : '', [Validators.required, existOn(this.arrayItems)]]
     });
     this.sendEventsUp();
   }
@@ -86,6 +88,16 @@ export class SelectorListComponent extends BaseForm implements OnInit {
   blurHandler(evt: any) {
     this.displayList = false;
   }
+
+
+  emitValidation() {
+    this.validation.emit(this.form.valid);
+  }
+
+  updateModel() {
+    this.model.autocomplete = this.form.controls.autocomplete.value as string;
+  }
+
 
   get autocomplete() { return this.form.get('autocomplete'); }
 

@@ -1,12 +1,12 @@
 <fieldset>
   <legend data-qa="personal-details-legend">Details</legend>
-  <app-name-input (eventForm)="getForm($event)"></app-name-input>
-  <app-last-name-input (eventForm)="getForm($event)"></app-last-name-input>
-  <app-email-input (eventForm)="getForm($event)"></app-email-input>
+  <app-name-input [model]="name" (validation)="isNameValid($event)"></app-name-input>
+  <app-last-name-input [model]="lastName" (validation)="isLastNameValid($event)"></app-last-name-input>
+  <app-email-input [model]="emails" (validation)="areEmailsValids($event)"></app-email-input>
 </fieldset>
 <fieldset>
   <legend>Tell us something about you</legend>
-  <app-selector-list (eventForm)="getForm($event)" [itemsToDisplay]="itemsToDisplay">
+  <app-selector-list (validation)="isAutocompleteValid($event)" [model]="autocomplete" [itemsToDisplay]="itemsToDisplay">
     <label for="autocomplete" class="first">Which is your favourite city?</label>
     <span class="errorMessage">This field is required</span>
     <span class="errorMessageExistOn">The city must be in the list</span>
