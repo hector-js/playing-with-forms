@@ -1,6 +1,7 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { BaseForm } from '../../utilities/class/base-form';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+
+import { BaseForm } from '../../../forms';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { BaseForm } from '../../utilities/class/base-form';
 })
 export class EmailInputComponent extends BaseForm implements OnInit {
 
-  constructor(public fb: FormBuilder) { 
+  constructor(public fb: FormBuilder) {
     super();
   }
 

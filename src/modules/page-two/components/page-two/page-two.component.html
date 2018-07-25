@@ -13,6 +13,12 @@
   </app-selector-list>
 </fieldset>
 
+<div *ngIf="errorForm" class="alert alert-danger">
+  <small>
+    Something was wrong.
+  </small>
+</div>
+
 <div class="btn-group center-element">
   <button type="button" name="back" (click)="onBack()" class="btn btn-default btn-sm">Back</button>
   <button type="button" name="next" (click)="onClick()" class="btn btn-primary btn-sm">Continue</button>

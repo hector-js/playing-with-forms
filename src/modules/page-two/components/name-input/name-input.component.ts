@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { BaseForm } from '../../../forms';
 
-import { BaseForm } from '../../utilities/class/base-form';
 
 @Component({
   selector: 'app-name-input',
@@ -18,6 +18,7 @@ export class NameInputComponent extends BaseForm implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required]
     });
+
     this.sendEventsUp();
   }
 

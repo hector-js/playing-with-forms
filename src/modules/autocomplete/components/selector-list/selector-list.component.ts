@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
-import { BaseForm } from '../../../page-two/utilities/class/base-form';
+import { BaseForm } from '../../../forms';
 
 @Component({
   selector: 'app-selector-list',
