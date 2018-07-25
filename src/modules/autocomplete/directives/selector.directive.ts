@@ -8,7 +8,7 @@ export class SelectorDirective {
 
   constructor(private el: ElementRef) { }
 
-  @HostListener('click') onClick() {
+  @HostListener('mouseover') onClick() {
     this.el.nativeElement.style.backgroundColor = 'black';
   }
 
