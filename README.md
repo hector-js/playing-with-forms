@@ -1,6 +1,6 @@
-PLAYING WITH MODULES
+PLAYING WITH FORMS
 =================
-The title describes the project  by itself, *playing with modules* in Angular *6* for a *multi page* application!! :)
+The title describes the project  by itself, *playing with forms* in Angular *6* for a *multi page* application!! :)
 
 RootModules and FeatureModule
 =============================

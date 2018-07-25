@@ -83,7 +83,7 @@ export class SelectorListComponent extends BaseForm implements OnInit {
     this.element = {value: inputValue};
   }
 
-  public blurHandler(evt: any) {
+  blurHandler(evt: any) {
     this.displayList = false;
   }
 
