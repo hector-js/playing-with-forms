@@ -1,0 +1,11 @@
+<form [formGroup]="form">
+  <div class="form-group col-xs-3">
+    <ng-content select=".label"></ng-content>
+    <input type="text" id="inputBox" formControlName="controlName" class="form-control" data-qa="name">
+    <div *ngIf="control.invalid && (control.dirty || control.touched)" class="alert alert-danger">
+      <small *ngIf="control.errors.required" data-qa="error-message-name">
+        <ng-content select=".errorRequiredMessge"></ng-content>
+      </small>
+    </div>
+  </div>
+</form>

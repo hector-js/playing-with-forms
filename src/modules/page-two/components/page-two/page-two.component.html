@@ -1,6 +1,9 @@
 <fieldset>
   <legend data-qa="personal-details-legend">Details</legend>
-  <app-name-input [model]="name" (validation)="isNameValid($event)"></app-name-input>
+  <app-input-box [model]="name" [dataName]="'name'" (validation)="isNameValid($event)">
+    <label class="label">Name</label>
+    <span class="errorRequiredMessge">Name is required.</span>
+  </app-input-box>
   <app-last-name-input [model]="lastName" (validation)="isLastNameValid($event)"></app-last-name-input>
   <app-email-input [model]="emails" (validation)="areEmailsValids($event)"></app-email-input>
 </fieldset>
