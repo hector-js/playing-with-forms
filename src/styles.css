@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+.center {
+    text-align: center;
+}
+
+.field-16-top{
+    padding-top: 16px;
+}
+
+.field-16-bottom{
+    padding-bottom: 16px;
+}
+
+.field-56-bottom{
+    padding-bottom: 56px;
+}
+
+.field-56-top{
+    padding-top: 56px;
+}
+
+.document{
+    background: #EEECEC;
+    padding: 12px 12px 12px 12px;
+    border-radius: 6px;
+}

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ElementRef, OnChanges } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -14,7 +14,7 @@ import { Autocomplete } from '../../utilities/model/autocomplete';
   templateUrl: './page-two.component.html',
   styleUrls: ['./page-two.component.css']
 })
-export class PageTwoComponent implements OnInit {
+export class PageTwoComponent implements OnInit, OnChanges {
 
   itemsToDisplay = CITIES;
   errorForm: boolean;
@@ -22,11 +22,14 @@ export class PageTwoComponent implements OnInit {
   lastNameValidation: boolean;
   emailsValidation: boolean;
   autocompleteValidation: boolean;
+  counter = 0;
+  array = ['grey', 'white'];
 
   name: Name;
   lastName: LastName;
   emails: Emails;
   autocomplete: Autocomplete;
+
 
   constructor(public pageTwoService: PageTwoService) {
   }
@@ -38,9 +41,14 @@ export class PageTwoComponent implements OnInit {
     this.autocomplete = this.pageTwoService.pageTwo.autcomplete;
   }
 
+  ngOnChanges() {
+    if (this.formValid()) {
+      this.errorForm = false;
+    }
+  }
+
   onClick() {
-    if (this.nameValidation && this.lastNameValidation
-      && this.emailsValidation && this.isAutocompleteValid) {
+    if (this.formValid()) {
       this.pageTwoService.sendMessage('continue');
     } else {
       this.errorForm = true;
@@ -51,21 +59,32 @@ export class PageTwoComponent implements OnInit {
     this.pageTwoService.sendMessage('back');
   }
 
-  isNameValid($event) {
+  isNameValid($event: boolean) {
     this.nameValidation = $event;
   }
 
-  isLastNameValid($event) {
+  isLastNameValid($event: boolean) {
     this.lastNameValidation = $event;
   }
 
-  areEmailsValids($event) {
+  areEmailsValids($event: boolean) {
     this.emailsValidation = $event;
   }
 
-  isAutocompleteValid($event) {
+  isAutocompleteValid($event: boolean) {
     this.autocompleteValidation = $event;
   }
 
+  count() {
+    this.counter++;
+  }
+
+  changeColor() {
+    this.array = ['yellow', 'white'];
+  }
+
+  private formValid(): boolean {
+    return this.nameValidation && this.lastNameValidation && this.emailsValidation && this.autocompleteValidation;
+  }
 
 }

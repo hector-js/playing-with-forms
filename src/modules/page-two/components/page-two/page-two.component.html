@@ -1,17 +1,46 @@
-<fieldset>
-  <legend data-qa="personal-details-legend">Details</legend>
-  <app-name-input [model]="name" (validation)="isNameValid($event)"></app-name-input>
-  <app-last-name-input [model]="lastName" (validation)="isLastNameValid($event)"></app-last-name-input>
-  <app-email-input [model]="emails" (validation)="areEmailsValids($event)"></app-email-input>
-</fieldset>
-<fieldset>
-  <legend>Tell us something about you</legend>
-  <app-selector-list (validation)="isAutocompleteValid($event)" [model]="autocomplete" [itemsToDisplay]="itemsToDisplay">
-    <label for="autocomplete" class="first">Which is your favourite city?</label>
-    <span class="errorMessage">This field is required</span>
-    <span class="errorMessageExistOn">The city must be in the list</span>
-  </app-selector-list>
-</fieldset>
+<div class="center field-16-bottom">
+  <div>
+    <app-display-nav [counter]="counter" [color]="array"></app-display-nav>
+  </div>
+  <div class="btn-group center-element">
+    <button type="button" class="btn btn-default btn-sm" (click)="count()">Add</button>
+    <button type="button" class="btn btn-default btn-sm" (click)="changeColor()">Color</button>
+  </div>
+</div>
+<div class="center field-16-bottom">
+  <h2>Information</h2>
+</div>
+
+<section class="field-16-bottom">
+  <div class="document">
+    <fieldset>
+      <legend data-qa="personal-details-legend">
+        <h3>Personal details</h3>
+      </legend>
+      <app-input-box [model]="name" [dataName]="'name'" (validation)="isNameValid($event)">
+        <label class="label">Name</label>
+        <span class="errorRequiredMessge">Name is required.</span>
+      </app-input-box>
+      <app-last-name-input [model]="lastName" (validation)="isLastNameValid($event)"></app-last-name-input>
+      <app-email-input [model]="emails" (validation)="areEmailsValids($event)"></app-email-input>
+    </fieldset>
+  </div>
+
+</section>
+<section class="field-16-bottom">
+  <div class="document">
+    <fieldset>
+      <legend>
+        <h3>About you</h3>
+      </legend>
+      <app-selector-list (validation)="isAutocompleteValid($event)" [model]="autocomplete" [itemsToDisplay]="itemsToDisplay">
+        <label for="autocomplete" class="first">Which is your favourite city?</label>
+        <span class="errorMessage">This field is required</span>
+        <span class="errorMessageExistOn">The city must be in the list</span>
+      </app-selector-list>
+    </fieldset>
+  </div>
+</section>
 
 <div *ngIf="errorForm" class="alert alert-danger">
   <small>
@@ -19,7 +48,7 @@
   </small>
 </div>
 
-<div class="btn-group center-element">
+<div class="btn-group center-element field-16-top field-56-bottom">
   <button type="button" name="back" (click)="onBack()" class="btn btn-default btn-sm">Back</button>
   <button type="button" name="next" (click)="onClick()" class="btn btn-primary btn-sm">Continue</button>
 </div>

@@ -8,7 +8,7 @@ import { PageThreeService } from '../../../modules/page-three/service/page-three
 import { PageFourService } from '../../../modules/page-four/service/page-four.service';
 import { PageTwoService } from '../../../modules/page-two/service/page-two.service';
 
-fdescribe('AppNavigationService', () => {
+describe('AppNavigationService', () => {
   let appNavigationService: AppNavigationService;
   let navigationServiceSpy;
 

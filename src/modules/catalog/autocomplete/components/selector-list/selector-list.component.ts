@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
-import { BaseForm } from '../../../forms';
-import { Autocomplete } from '../../../page-three/utilities/models/autocomplete';
+import { BaseForm } from '../../../../forms';
+import { Autocomplete } from '../../../../page-two/utilities/model/autocomplete';
 
 @Component({
   selector: 'app-selector-list',

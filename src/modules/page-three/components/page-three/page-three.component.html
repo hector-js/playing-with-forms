@@ -1,20 +1,21 @@
-<fieldset>
-  <legend data-qa="pageThree">PAGE THREE</legend>
-  <h2>Tell us something about you</h2>
-  <app-selector-list (validation)="isAutocompleteValid($event)" [model]="autocomplete" [itemsToDisplay]="itemsToDisplay">
-    <label for="autocomplete" class="first">Which is your favourite city?</label>
-    <span class="errorMessage">This field is required</span>
-    <span class="errorMessageExistOn">The city must be in the list</span>
-  </app-selector-list>
-</fieldset>
-
-<div *ngIf="errorForm" class="alert alert-danger">
-  <small>
-    Something was wrong.
-  </small>
+<div class="document field-16-top">
+  <fieldset>
+    <legend data-qa="pageThree">PAGE THREE</legend>
+    <h2>Tell us something about you</h2>
+    <app-selector-list (validation)="isAutocompleteValid($event)" [model]="autocomplete" [itemsToDisplay]="itemsToDisplay">
+      <label for="autocomplete" class="first">Which is your favourite city?</label>
+      <span class="errorMessage">This field is required</span>
+      <span class="errorMessageExistOn">The city must be in the list</span>
+    </app-selector-list>
+    <div *ngIf="errorForm" class="alert alert-danger">
+      <small>
+        Something was wrong.
+      </small>
+    </div>
+  </fieldset>
 </div>
 
-<div class="btn-group center-element">
+<div class="btn-group center-element field-16-top field-56-bottom">
   <button type="button" name="back" (click) = "onBack()" class="btn btn-default btn-sm">Back</button>
   <button type="button" name="next" (click) = "onClick()" class="btn btn-primary btn-sm">Continue</button>
 </div>
