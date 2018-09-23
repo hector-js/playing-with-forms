@@ -59,18 +59,22 @@ export class PageTwoComponent implements OnInit, OnChanges {
 
   isNameValid($event: boolean) {
     this.nameValidation = $event;
+    this.ngOnChanges();
   }
 
   isLastNameValid($event: boolean) {
     this.lastNameValidation = $event;
+    this.ngOnChanges();
   }
 
   areEmailsValids($event: boolean) {
     this.emailsValidation = $event;
+    this.ngOnChanges();
   }
 
   isAutocompleteValid($event: boolean) {
     this.autocompleteValidation = $event;
+    this.ngOnChanges();
   }
 
   count() {
