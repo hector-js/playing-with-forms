@@ -1,13 +1,11 @@
-import { Component, OnDestroy, OnInit, ViewChild, ElementRef, OnChanges } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Component, OnChanges, OnInit } from '@angular/core';
 
 import { PageTwoService } from '../../service/page-two.service';
 import { CITIES } from '../../utilities/data/cities';
-import { Emails } from '../../utilities/model/emails';
-import { Name } from '../../utilities/model/name';
-import { LastName } from '../../utilities/model/last-name';
 import { Autocomplete } from '../../utilities/model/autocomplete';
+import { Emails } from '../../utilities/model/emails';
+import { LastName } from '../../utilities/model/last-name';
+import { Name } from '../../utilities/model/name';
 
 @Component({
   selector: 'app-page-two',
