@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --aot --prod",
-    "start-local": "node server.js",
+    "start-local": "ng serve --aot",
+    "start": "node server.js",
     "start-minify": "ng serve --aot --prod",
     "build": "ng build",
     "test": "ng test",
