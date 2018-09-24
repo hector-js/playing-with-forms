@@ -27,8 +27,11 @@ export class DisplayNavComponent implements OnInit {
   @Input('color')
   set color(colors: string[]) {
     const element: HTMLElement = this.circle.nativeElement;
-    element.setAttribute('stroke', colors[0]);
-    element.setAttribute('fill', colors[1]);
+    if (colors) {
+      element.setAttribute('stroke', colors[0]);
+      element.setAttribute('fill', colors[1]);
+    }
+
   }
 
 }

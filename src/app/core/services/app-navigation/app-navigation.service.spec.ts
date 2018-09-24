@@ -1,12 +1,12 @@
 import { AppNavigationService } from './app-navigation.service';
-import { NavigationService } from '../../../modules/navigation/services/navigation/navigation.service';
+import { NavigationService } from '../../../../modules/navigation/services/navigation/navigation.service';
 
 
 import { TestBed } from '@angular/core/testing';
-import { PageOneService } from '../../../modules/page-one/service/page-one.service';
-import { PageThreeService } from '../../../modules/page-three/service/page-three.service';
-import { PageFourService } from '../../../modules/page-four/service/page-four.service';
-import { PageTwoService } from '../../../modules/page-two/service/page-two.service';
+import { PageOneService } from '../../../../modules/page-one/service/page-one.service';
+import { PageThreeService } from '../../../../modules/page-three/service/page-three.service';
+import { PageFourService } from '../../../../modules/page-four/service/page-four.service';
+import { PageTwoService } from '../../../../modules/page-two/service/page-two.service';
 
 describe('AppNavigationService', () => {
   let appNavigationService: AppNavigationService;

@@ -28,7 +28,7 @@ export class TestWrapperComponent implements OnInit {
   // }
 }
 
-fdescribe('DisplayNavComponent', () => {
+describe('DisplayNavComponent', () => {
   let component: TestWrapperComponent;
   let fixture: ComponentFixture<TestWrapperComponent>;
   let nativeElement: HTMLElement;

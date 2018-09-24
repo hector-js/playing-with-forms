@@ -1,0 +1,48 @@
+.center{
+    text-align: center;
+}
+
+.error{
+    border:1px solid red;
+}
+
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+
+@media only screen and (min-width:1000px){
+    #day{
+        width: 50px;
+    }
+    #month{
+        width: 50px;
+    }
+    #year{
+        width: 70px;
+    }
+}
+
+@media only screen and (max-width:1000px)and (min-width:600px){
+    #day{
+        width: 50px;
+    }
+    #month{
+        width: 50px;
+    }
+    #year{
+        width: 70px;
+    }
+}
+
+@media only screen and (max-width:600px) and (min-width:400px){
+    #day{
+        width: 50px;
+    }
+    #month{
+        width: 50px;
+    }
+    #year{
+        width: 70px;
+    }
+}
