@@ -6,5 +6,6 @@ export class PageOneService extends MessageProducer {
 
   constructor() {
     super();
+    console.log('PageOneService');
   }
 }

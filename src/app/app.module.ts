@@ -11,8 +11,8 @@ import { PageTwoService } from '../modules/page-two/service/page-two.service';
 import { PageThreeService } from '../modules/page-three/service/page-three.service';
 import { PageFourService } from '../modules/page-four/service/page-four.service';
 import { AppRoutingModule } from './app-routing.module';
-import { AppNavigationService } from './service/app-navigation/app-navigation.service';
 import { NavigationService } from '../modules/navigation';
+import { AppNavigationService } from './core/services/app-navigation/app-navigation.service';
 
 @NgModule({
   declarations: [
@@ -27,12 +27,12 @@ import { NavigationService } from '../modules/navigation';
     PageFourModule
   ],
   providers: [
-    AppNavigationService,
     NavigationService,
     PageOneService,
     PageTwoService,
     PageThreeService,
-    PageFourService
+    PageFourService,
+    AppNavigationService
   ],
   bootstrap: [AppComponent]
 })

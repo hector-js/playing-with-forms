@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppNavigationService } from './core/services/app-navigation/app-navigation.service';
 
-import { AppNavigationService } from './service/app-navigation/app-navigation.service';
 
 @Component({
   selector: 'app-root',

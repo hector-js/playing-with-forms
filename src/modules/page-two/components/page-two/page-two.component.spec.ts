@@ -9,6 +9,10 @@ describe('PageTwoComponent', () => {
   let fixture: ComponentFixture<PageTwoComponent>;
   let nativeElement: HTMLElement;
 
+  const byDataQa = (value) => {
+    return '[data-qa="' + value + '"]';
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PageTwoComponent ],
@@ -29,10 +33,6 @@ describe('PageTwoComponent', () => {
   it('should contains element with proper data', () => {
     expect(nativeElement.querySelector(byDataQa('personal-details-legend')).textContent).toBe('PERSONAL DETAILS');
   });
-
-  const byDataQa = (value) => {
-    return '[data-qa="' + value + '"]';
-  };
 
   const simulateEvent = (element, eventType) => {
       const event = document.createEvent('Events');

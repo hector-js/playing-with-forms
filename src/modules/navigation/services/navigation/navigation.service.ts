@@ -17,6 +17,7 @@ export class NavigationService {
      public pageTwoService: PageTwoService,
      public pageThreeService: PageThreeService,
      public pageFourService: PageFourService) {
+      console.log('NavigationService');
   }
 
   subscribeActionEvents() {

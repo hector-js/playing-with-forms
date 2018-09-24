@@ -40,9 +40,7 @@ export class PageTwoComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.formValid()) {
-      this.errorForm = false;
-    }
+    this.isValid();
   }
 
   onClick() {
@@ -59,22 +57,22 @@ export class PageTwoComponent implements OnInit, OnChanges {
 
   isNameValid($event: boolean) {
     this.nameValidation = $event;
-    this.ngOnChanges();
+    this.isValid();
   }
 
   isLastNameValid($event: boolean) {
     this.lastNameValidation = $event;
-    this.ngOnChanges();
+    this.isValid();
   }
 
   areEmailsValids($event: boolean) {
     this.emailsValidation = $event;
-    this.ngOnChanges();
+    this.isValid();
   }
 
   isAutocompleteValid($event: boolean) {
     this.autocompleteValidation = $event;
-    this.ngOnChanges();
+    this.isValid();
   }
 
   count() {
@@ -87,6 +85,12 @@ export class PageTwoComponent implements OnInit, OnChanges {
 
   private formValid(): boolean {
     return this.nameValidation && this.lastNameValidation && this.emailsValidation && this.autocompleteValidation;
+  }
+
+  private isValid() {
+    if (this.formValid()) {
+      this.errorForm = false;
+    }
   }
 
 }

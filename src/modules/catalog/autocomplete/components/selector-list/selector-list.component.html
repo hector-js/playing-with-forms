@@ -5,7 +5,7 @@
     <div   *ngIf="displayList" class="position" >
       <div *ngFor="let item of arrayItems | filter:element; let i=index">
         <div appDetectClick #childContainer id="itemDisplayed" [ngClass]="{selected: i === itemFocused}" class="borderItem pointer form-control" (mousedown)="selectValue(item.value)">
-          {{item.value}}
+          {{ item.value }}
         </div>
       </div>
     </div>
