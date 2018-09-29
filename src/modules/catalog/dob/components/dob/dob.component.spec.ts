@@ -1,8 +1,8 @@
+import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { DobComponent } from './dob.component';
-import { Component, OnInit, forwardRef, NO_ERRORS_SCHEMA } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-wrapper',

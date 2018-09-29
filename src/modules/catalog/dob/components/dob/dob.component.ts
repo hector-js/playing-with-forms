@@ -1,5 +1,6 @@
-import { Component, OnInit, forwardRef, Renderer2, ElementRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, FormControl } from '@angular/forms';
+import { Component, ElementRef, forwardRef, OnInit, Renderer2 } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
+
 import { DateValidator } from '../../utilities/validators/date-validator';
 
 const CUSTOM_VALUE_ACCESSOR: any = {
