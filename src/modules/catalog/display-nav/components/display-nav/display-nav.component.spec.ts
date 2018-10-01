@@ -60,7 +60,7 @@ describe('DisplayNavComponent', () => {
 
     fixture.detectChanges();
 
-    expect(component.comp.nativeElement.querySelector('text').getText()).toBe(2);
+    expect(component.comp.nativeElement.querySelector('text').textContent).toBe(2);
   });
 
 });

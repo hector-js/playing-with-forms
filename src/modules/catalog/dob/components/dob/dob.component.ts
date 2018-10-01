@@ -10,9 +10,9 @@ const CUSTOM_VALUE_ACCESSOR: any = {
 };
 
 const CUSTOM_VALIDATORS: any = {
-    provide: NG_VALIDATORS,
-    useExisting: forwardRef(() => DobComponent),
-    multi: true,
+  provide: NG_VALIDATORS,
+  useExisting: forwardRef(() => DobComponent),
+  multi: true,
 };
 
 @Component({
@@ -25,14 +25,19 @@ const CUSTOM_VALIDATORS: any = {
   ],
 
 })
-export class DobComponent implements OnInit, ControlValueAccessor, Validator  {
+export class DobComponent implements OnInit, ControlValueAccessor, Validator {
 
   private disabled: boolean;
   onChange: Function;
   onTouched: Function;
 
+  private dayTouched: boolean;
+  private monthTouched: boolean;
+  private yearTouched: boolean;
+  private lastControl: FormControl;
+
   constructor(
-    private elementRef: ElementRef ,
+    private elementRef: ElementRef,
     private renderer: Renderer2) {
     this.onChange = (_: any) => { };
     this.onTouched = () => { };
@@ -42,11 +47,11 @@ export class DobComponent implements OnInit, ControlValueAccessor, Validator  {
   ngOnInit() {
   }
 
-  writeValue(obj?: number[]| null): void {
-    if (obj) {
-      this.day = obj[0];
-      this.month = obj[1];
-      this.year = obj[2];
+  writeValue(valueForm?: number[] | null): void {
+    if (valueForm) {
+      this.day = valueForm[0];
+      this.month = valueForm[1];
+      this.year = valueForm[2];
     }
     this.onChange(this.value);
   }
@@ -63,34 +68,60 @@ export class DobComponent implements OnInit, ControlValueAccessor, Validator  {
     this.disabled = isDisabled;
   }
 
-  write(): void {
-    this.writeValue();
+  validate(control: FormControl): any {
+    this.lastControl = control;
+    let errorMessage: any;
+    const dateValidator = new DateValidator(this.day, this.month, this.year);
+    errorMessage = dateValidator.validateDate;
+   if (control.touched) {
+      this.initializeView(errorMessage, control.value);
+    }
+
+    return errorMessage;
   }
 
-  validate(c: FormControl): any {
-    const dateValidator = new DateValidator(this.day, this.month, this.year);
-    const errorMesssage: any = dateValidator.validateDate;
-    this.initializeView(errorMesssage);
-    return errorMesssage;
+  blurOnDay(): void {
+    this.dayTouched = true;
+    this.formIsTouched();
+  }
+
+  blurOnMonth(): void {
+    this.monthTouched = true;
+    this.formIsTouched();
+  }
+
+  blurOnYear(): void {
+    this.yearTouched = true;
+    this.formIsTouched();
+  }
+
+  keyUpOnDay(): void {
+    this.writeValue();
+    this.dayTouched = true;
+    this.formIsTouched();
+  }
+
+  keyUpOnMonth(): void {
+    this.writeValue();
+    this.monthTouched = true;
+    this.formIsTouched();
+  }
+
+  keyUpOnYear(): void {
+    this.writeValue();
+    this.yearTouched = true;
+    this.formIsTouched();
   }
 
   get value(): number[] {
     return [this.day, this.month, this.year];
   }
 
-  private initializeView(errorMessage: any): void {
+  private initializeView(errorMessage: any, c: number[]): void {
     if (errorMessage) {
-      if (errorMessage.dayFormat) {
-        this.addErrorClass = this.dayElement;
-      } else if (errorMessage.monthFormat) {
-        this.addErrorClass = this.monthElement;
-      } else if (errorMessage.yearFormat) {
-        this.addErrorClass = this.yearElement;
-      } else {
-        this.addErrorClass = this.dayElement;
-        this.addErrorClass = this.monthElement;
-        this.addErrorClass = this.yearElement;
-      }
+      this.addErrorClass = this.dayElement;
+      this.addErrorClass = this.monthElement;
+      this.addErrorClass = this.yearElement;
     } else {
       this.removeErrorClass = this.dayElement;
       this.removeErrorClass = this.monthElement;
@@ -98,52 +129,36 @@ export class DobComponent implements OnInit, ControlValueAccessor, Validator  {
     }
   }
 
-  private get day(): number{
-    return this.dayElement.value;
+  private formIsTouched() {
+    if (this.dayTouched && this.monthTouched && this.yearTouched) {
+      this.onTouched();
+      this.validate(this.lastControl);
+    }
   }
 
-  private set day(value: number){
-    this.renderer.setProperty(this.dayElement, 'value', value);
-  }
+  private get day(): number { return this.dayElement.value; }
 
-  private get month(): number{
-    return this.monthElement.value;
-  }
+  private set day(value: number) { this.setProperty(this.dayElement, value); }
 
-  private set month(value: number){
-    this.renderer.setProperty(this.monthElement, 'value', value);
-  }
+  private get dayElement(): any { return this.querySelector('#day'); }
 
-  private get year(): number{
-    return this.yearElement.value;
-  }
+  private get month(): number { return this.monthElement.value; }
 
-  private set year(value: number){
-    this.renderer.setProperty(this.yearElement, 'value', value);
-  }
+  private set month(value: number) { this.setProperty(this.monthElement, value); }
 
-  private set addErrorClass(element: any) {
-    this.renderer.addClass(element, 'error');
-  }
+  private get monthElement(): any { return this.querySelector('#month'); }
 
-  private set removeErrorClass(element: any) {
-    this.renderer.removeClass(element, 'error');
-  }
+  private get year(): number { return this.yearElement.value; }
 
-  private get dayElement(): any{
-    return this.nativeElement.querySelector('#day');
-  }
+  private set year(value: number) { this.setProperty(this.yearElement, value); }
 
-  private get monthElement(): any{
-    return this.nativeElement.querySelector('#month');
-  }
+  private get yearElement(): any { return this.querySelector('#year'); }
 
-  private get yearElement(): any{
-    return this.nativeElement.querySelector('#year');
-  }
+  private set addErrorClass(element: any) { this.renderer.addClass(element, 'error'); }
 
-  private get nativeElement(): Element{
-    return this.elementRef.nativeElement;
-  }
+  private set removeErrorClass(element: any) { this.renderer.removeClass(element, 'error'); }
+
+  private querySelector = (value: string) => this.elementRef.nativeElement.querySelector(value);
+
+  private setProperty = ( element: any, value: number) => this.renderer.setProperty(element, 'value', value);
 }
-
