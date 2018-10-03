@@ -5,7 +5,7 @@ describe('DateValidator - years', () => {
   const wrongYear: number = new Date().getFullYear() + 1;
 
   it('should be invalid with invalid date message when month and day are invalid', () => {
-    const result = new DateValidator(0, 0, 1).validateDate;
+    const result = new DateValidator(32, 13, 1).validateDate;
 
     expect(result.invalidDate).toBeTruthy();
   });

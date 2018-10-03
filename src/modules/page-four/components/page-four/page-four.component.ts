@@ -11,11 +11,17 @@ export class PageFourComponent implements OnInit {
 
 
   form: FormGroup;
+  errorForm: boolean;
 
   constructor(public pageFourService: PageFourService, public fb: FormBuilder) {
   }
   ngOnInit() {
-    this.form = this.fb.group({ dob: [[10, 10, 10], [Validators.required]] });
+    this.form = this.fb.group({ dob: [[undefined, undefined, undefined], [Validators.required]] });
+    this.form.valueChanges.subscribe(() => {
+      if (this.form.valid && this.errorForm) {
+        this.errorForm = false;
+      }
+    });
   }
 
   onChangeData($event) {
@@ -25,7 +31,11 @@ export class PageFourComponent implements OnInit {
   }
 
   onClick() {
-    this.pageFourService.sendMessage('continue');
+    if (this.form.valid) {
+      this.pageFourService.sendMessage('continue');
+    } else {
+      this.errorForm = true;
+    }
   }
 
   onBack() {

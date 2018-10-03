@@ -9,25 +9,31 @@
         <app-dob formControlName="dob" (keyup)="onChangeData($event)" (blur)="onBlurData($event)"></app-dob>
       
         <div *ngIf="dob.invalid && (dob.touched || dob.dirty)">
-          <small *ngIf="dob.errors.leapError" class="errorText">
-            Leap error!
-          </small>
-          <small *ngIf="dob.errors.dayFormat" class="errorText">
-            Wrong day!
-          </small>
-          <small *ngIf="dob.errors.monthFormat" class="errorText">
-            Wrong month!
-          </small>
-          <small *ngIf="dob.errors.yearFormat" class="errorText">
-            Wrong year!
-          </small>
-          <small *ngIf="dob.errors.invalidDate" class="errorText">
-            Invalid date!
-          </small>
+          <div *ngIf="dob.errors.formTouched">
+              <small *ngIf="dob.errors.formTouched.leapError" class="errorText">
+                  Leap error!
+                </small>
+                <small *ngIf="dob.errors.formTouched.dayFormat" class="errorText">
+                  Wrong day!
+                </small>
+                <small *ngIf="dob.errors.formTouched.monthFormat" class="errorText">
+                  Wrong month!
+                </small>
+                <small *ngIf="dob.errors.formTouched.yearFormat" class="errorText">
+                  Wrong year!
+                </small>
+                <small *ngIf="dob.errors.formTouched.invalidDate" class="errorText">
+                  Invalid date!
+                </small>
+          </div>
+         
         </div>
       </form>
       <div class="center">
-        Valid: {{form.controls.dob.valid}}
+        Valid (form.controls.dob): {{form.controls.dob.valid}}
+      </div>
+      <div class="center">
+        Valid (form.valid): {{form.valid}}
       </div>
       <div class="center">
         Form: {{form.controls.dob.value[0]}} - {{form.controls.dob.value[1]}} - {{form.controls.dob.value[2]}}
@@ -45,6 +51,13 @@
     </fieldset>
   </div>
 </section>
+
+<div *ngIf="errorForm" class="alert alert-danger">
+  <small>
+   Form not completed
+  </small>
+</div>
+
 
 <div class="center">
   <div class="btn-group center-element">

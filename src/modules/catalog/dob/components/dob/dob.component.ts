@@ -34,7 +34,6 @@ export class DobComponent implements OnInit, ControlValueAccessor, Validator {
   private dayTouched: boolean;
   private monthTouched: boolean;
   private yearTouched: boolean;
-  private lastControl: FormControl;
 
   constructor(
     private elementRef: ElementRef,
@@ -69,48 +68,55 @@ export class DobComponent implements OnInit, ControlValueAccessor, Validator {
   }
 
   validate(control: FormControl): any {
-    this.lastControl = control;
     let errorMessage: any;
     const dateValidator = new DateValidator(this.day, this.month, this.year);
     errorMessage = dateValidator.validateDate;
-   if (control.touched) {
+    if (this.formIsTouched) {
+      if (errorMessage) {
+        const error = errorMessage;
+        errorMessage = { formTouched: error };
+      }
       this.initializeView(errorMessage, control.value);
     }
 
+    console.log('errorMessage: ', errorMessage);
     return errorMessage;
   }
 
   blurOnDay(): void {
     this.dayTouched = true;
-    this.formIsTouched();
+    this.writeValue();
+    this.onTouched(this.value);
   }
 
   blurOnMonth(): void {
     this.monthTouched = true;
-    this.formIsTouched();
+    this.writeValue();
+    this.onTouched(this.value);
   }
 
   blurOnYear(): void {
     this.yearTouched = true;
-    this.formIsTouched();
+    this.writeValue();
+    this.onTouched(this.value);
   }
 
   keyUpOnDay(): void {
-    this.writeValue();
     this.dayTouched = true;
-    this.formIsTouched();
+    this.writeValue();
+    this.onTouched(this.value);
   }
 
   keyUpOnMonth(): void {
-    this.writeValue();
     this.monthTouched = true;
-    this.formIsTouched();
+    this.writeValue();
+    this.onTouched(this.value);
   }
 
   keyUpOnYear(): void {
-    this.writeValue();
     this.yearTouched = true;
-    this.formIsTouched();
+    this.writeValue();
+    this.onTouched(this.value);
   }
 
   get value(): number[] {
@@ -129,11 +135,8 @@ export class DobComponent implements OnInit, ControlValueAccessor, Validator {
     }
   }
 
-  private formIsTouched() {
-    if (this.dayTouched && this.monthTouched && this.yearTouched) {
-      this.onTouched();
-      this.validate(this.lastControl);
-    }
+  private get formIsTouched() {
+    return this.dayTouched && this.monthTouched && this.yearTouched;
   }
 
   private get day(): number { return this.dayElement.value; }
@@ -160,5 +163,5 @@ export class DobComponent implements OnInit, ControlValueAccessor, Validator {
 
   private querySelector = (value: string) => this.elementRef.nativeElement.querySelector(value);
 
-  private setProperty = ( element: any, value: number) => this.renderer.setProperty(element, 'value', value);
+  private setProperty = (element: any, value: number) => this.renderer.setProperty(element, 'value', value);
 }
