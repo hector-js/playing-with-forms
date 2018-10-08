@@ -79,7 +79,6 @@ export class DobComponent implements OnInit, ControlValueAccessor, Validator {
       this.initializeView(errorMessage, control.value);
     }
 
-    console.log('errorMessage: ', errorMessage);
     return errorMessage;
   }
 

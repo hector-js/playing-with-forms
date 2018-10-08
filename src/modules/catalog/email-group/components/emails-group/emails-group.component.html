@@ -1,0 +1,19 @@
+<fieldset data-qa="emailContainer"  class="form-group col-xs-3">
+  <legend>Email</legend>
+  <input type="email" id="email" class="form-control" (blur)="emailOnBlur()" (keyup)="emailOnKeyup()" data-qa="email">
+  <div *ngIf="emailMessage" class="alert alert-danger">
+    <small >
+      Email error
+    </small>
+  </div>
+</fieldset>
+<fieldset data-qa="confirmContainer">
+  <legend>Confirm your email</legend>
+  <input type="email" id="confirm" class="form-control" (blur)="confirmOnBlur()" (keyup)="confirmOnKeyup()" data-qa="confirm">
+  <div *ngIf="confirmMessage" class="alert alert-danger">
+    <small>
+      Confirm error
+    </small>
+  </div>
+
+</fieldset>

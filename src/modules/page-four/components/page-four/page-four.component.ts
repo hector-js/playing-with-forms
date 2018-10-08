@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { PageFourService } from '../../service/page-four.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { emailsValidator } from '../../../catalog/email-group/utilities/validators/emails-validator';
+import { IEmails } from '../../../catalog/email-group/utilities/models/emails';
 
 @Component({
   selector: 'app-page-four',
@@ -12,16 +14,24 @@ export class PageFourComponent implements OnInit {
 
   form: FormGroup;
   errorForm: boolean;
+  emailGroup: IEmails;
+  event: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(public pageFourService: PageFourService, public fb: FormBuilder) {
+    this.emailGroup = { email: '', confirm: '' };
   }
   ngOnInit() {
-    this.form = this.fb.group({ dob: [[undefined, undefined, undefined], [Validators.required]] });
+    this.form = this.fb.group({
+      dob: [[undefined, undefined, undefined], [Validators.required]],
+      emails: [this.emailGroup]
+    });
     this.form.valueChanges.subscribe(() => {
       if (this.form.valid && this.errorForm) {
         this.errorForm = false;
       }
     });
+
+    this.event.emit(false);
   }
 
   onChangeData($event) {
@@ -30,10 +40,19 @@ export class PageFourComponent implements OnInit {
   onBlurData($event) {
   }
 
+  onChangeDataEmails($event) {
+  }
+
+  onBlurDataEmails($event) {
+  }
+
   onClick() {
+
     if (this.form.valid) {
       this.pageFourService.sendMessage('continue');
     } else {
+      this.event.emit(true);
+      this.form.updateValueAndValidity();
       this.errorForm = true;
     }
   }
@@ -43,5 +62,6 @@ export class PageFourComponent implements OnInit {
   }
 
   get dob() { return this.form.get('dob'); }
+  get emails() { return this.form.get('emails'); }
 
 }

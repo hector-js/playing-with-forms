@@ -52,6 +52,36 @@
   </div>
 </section>
 
+<section class="field-16-bottom">
+  <div class="document">
+    <fieldset>
+      <legend class="center" data-qa="pageFour">Emails module</legend>
+      <p class="center" >with controlValueAccessor and Validators</p>
+      <form [formGroup]="form">
+        <app-emails-group formControlName="emails" [parentEvent]="event" (keyup)="onChangeDataEmails($event)" (blur)="onBlurDataEmails($event)"></app-emails-group>         
+        <div class="center">
+          Valid (form): {{form.valid}}
+        </div>
+        <div class="center">
+          Valid (emails.valid): {{emails.valid}}
+        </div>
+        <div class="center">
+          Form: {{emails.value[0]}} - {{emails.value.email}} - {{emails.value.confirm}}
+        </div>
+        <div class="center">
+          Touched: {{emails.touched}}
+        </div>
+        <div class="center">
+          Pristine: {{emails.pristine}}
+        </div>
+        <div class="center">
+          Dirty: {{emails.dirty}}
+        </div>
+      </form>
+    </fieldset>
+  </div>
+</section>
+
 <div *ngIf="errorForm" class="alert alert-danger">
   <small>
    Form not completed
