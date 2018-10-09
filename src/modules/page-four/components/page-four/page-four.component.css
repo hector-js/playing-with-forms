@@ -1,3 +1,21 @@
 .errorText{
     color: red;
 }
+
+.container{
+    padding-right: 15%;
+    padding-left: 15%; 
+}
+
+@media only screen and (max-width: 600px) {
+    .container{
+        padding-right: 16px;
+        padding-left: 16px; 
+    }
+}
+
+.box-info {
+    background-color: #ffffcc;
+    border: #ffff1a solid;
+    border-radius: 2px;
+}

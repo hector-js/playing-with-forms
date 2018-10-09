@@ -1,50 +1,55 @@
 <h3 class="center">under construction!</h3>
 
 <section class="field-16-bottom">
-  <div class="document">
+  <div class="document container">
     <fieldset>
       <legend class="center" data-qa="pageFour">DATE MODULE</legend>
-      <p class="center" >(controlValueAccessor and Validators)</p>
+      <p class="center">(controlValueAccessor and Validators)</p>
       <form [formGroup]="form" class="center">
-        <app-dob formControlName="dob" (keyup)="onChangeData($event)" (blur)="onBlurData($event)"></app-dob>
-      
+        <label for="dob">Date of birth</label>
+        <app-dob id="dob" formControlName="dob" (keyup)="onChangeData($event)" (blur)="onBlurData($event)"></app-dob>
         <div *ngIf="dob.invalid && (dob.touched || dob.dirty)">
           <div *ngIf="dob.errors.formTouched">
-              <small *ngIf="dob.errors.formTouched.leapError" class="errorText">
-                  Leap error!
-                </small>
-                <small *ngIf="dob.errors.formTouched.dayFormat" class="errorText">
-                  Wrong day!
-                </small>
-                <small *ngIf="dob.errors.formTouched.monthFormat" class="errorText">
-                  Wrong month!
-                </small>
-                <small *ngIf="dob.errors.formTouched.yearFormat" class="errorText">
-                  Wrong year!
-                </small>
-                <small *ngIf="dob.errors.formTouched.invalidDate" class="errorText">
-                  Invalid date!
-                </small>
+            <small *ngIf="dob.errors.formTouched.leapError" class="errorText">
+              Leap error!
+            </small>
+            <small *ngIf="dob.errors.formTouched.dayFormat" class="errorText">
+              Wrong day!
+            </small>
+            <small *ngIf="dob.errors.formTouched.monthFormat" class="errorText">
+              Wrong month!
+            </small>
+            <small *ngIf="dob.errors.formTouched.yearFormat" class="errorText">
+              Wrong year!
+            </small>
+            <small *ngIf="dob.errors.formTouched.invalidDate" class="errorText">
+              Invalid date!
+            </small>
           </div>
         </div>
       </form>
-      <div class="center">
-        <b>Valid (form.controls.dob):</b> {{form.controls.dob.valid}}
-      </div>
-      <div class="center">
-        <b>Valid (form.valid):</b> {{form.valid}}
-      </div>
-      <div class="center">
-        <b>Form values:</b> {{form.controls.dob.value[0]}} - {{form.controls.dob.value[1]}} - {{form.controls.dob.value[2]}}
-      </div>
-      <div class="center">
-        <b>Touched:</b> {{form.controls.dob.touched}}
-      </div>
-      <div class="center">
-        <b>Pristine:</b> {{form.controls.dob.pristine}}
-      </div>
-      <div class="center">
-        <b>Dirty:</b> {{form.controls.dob.dirty}}
+      <div class="field-16-top">
+        <section class="box-info">
+          <div class="center">
+            <b>Valid (form.controls.dob):</b> {{form.controls.dob.valid}}
+          </div>
+          <div class="center">
+            <b>Valid (form.valid):</b> {{form.valid}}
+          </div>
+          <div class="center">
+            <b>Form values:</b> {{form.controls.dob.value[0]}} - {{form.controls.dob.value[1]}} -
+            {{form.controls.dob.value[2]}}
+          </div>
+          <div class="center">
+            <b>Touched:</b> {{form.controls.dob.touched}}
+          </div>
+          <div class="center">
+            <b>Pristine:</b> {{form.controls.dob.pristine}}
+          </div>
+          <div class="center">
+            <b>Dirty:</b> {{form.controls.dob.dirty}}
+          </div>
+        </section>
       </div>
 
     </fieldset>
@@ -52,29 +57,33 @@
 </section>
 
 <section class="field-16-bottom">
-  <div class="document">
+  <div class="document container">
     <fieldset>
       <legend class="center" data-qa="pageFour">EMAILS GROUP MODULE</legend>
-      <p class="center" >(controlValueAccessor and Validators)</p>
+      <p class="center">(controlValueAccessor and Validators)</p>
       <form [formGroup]="form">
-        <app-emails-group formControlName="emails" [parentEvent]="event" (keyup)="onChangeDataEmails($event)" (blur)="onBlurDataEmails($event)"></app-emails-group>         
-        <div class="center">
-          <b>Valid (form):</b> {{form.valid}}
-        </div>
-        <div class="center">
-          <b>Valid (emails.valid):</b> {{emails.valid}}
-        </div>
-        <div class="center">
-          <b>Form values:</b> {{emails.value.email}} - {{emails.value.confirm}}
-        </div>
-        <div class="center">
-          <b>Touched:</b> {{emails.touched}}
-        </div>
-        <div class="center">
-          <b>Pristine:</b> {{emails.pristine}}
-        </div>
-        <div class="center">
-          <b>Dirty:</b> {{emails.dirty}}
+        <app-emails-group formControlName="emails" [parentEvent]="event" (keyup)="onChangeDataEmails($event)" (blur)="onBlurDataEmails($event)"></app-emails-group>
+        <div class="field-16-top">
+          <section class="box-info">
+            <div class="center">
+              <b>Valid (form):</b> {{form.valid}}
+            </div>
+            <div class="center">
+              <b>Valid (emails.valid):</b> {{emails.valid}}
+            </div>
+            <div class="center">
+              <b>Form values:</b> {{emails.value.email}} - {{emails.value.confirm}}
+            </div>
+            <div class="center">
+              <b>Touched:</b> {{emails.touched}}
+            </div>
+            <div class="center">
+              <b>Pristine:</b> {{emails.pristine}}
+            </div>
+            <div class="center">
+              <b>Dirty:</b> {{emails.dirty}}
+            </div>
+          </section>
         </div>
       </form>
     </fieldset>
@@ -83,15 +92,14 @@
 
 <div *ngIf="errorForm" class="alert alert-danger">
   <small>
-   Form not completed
+    Form not completed
   </small>
 </div>
 
 
 <div class="center">
   <div class="btn-group center-element">
-    <button type="button" name="back" (click) = "onBack()" class="btn btn-default btn-sm">Back</button>
-    <button type="button" name="next" (click) = "onClick()" class="btn btn-primary btn-sm">Continue</button>
+    <button type="button" name="back" (click)="onBack()" class="btn btn-default btn-sm">Back</button>
+    <button type="button" name="next" (click)="onClick()" class="btn btn-primary btn-sm">Continue</button>
   </div>
 </div>
-

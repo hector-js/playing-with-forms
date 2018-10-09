@@ -1,8 +1,8 @@
-<fieldset data-qa="emailContainer"  class="form-group col-xs-3">
+<fieldset data-qa="emailContainer">
   <legend>Email</legend>
   <input type="email" id="email" class="form-control" (blur)="emailOnBlur()" (keyup)="emailOnKeyup()" data-qa="email">
   <div *ngIf="emailMessage" class="alert alert-danger">
-    <small >
+    <small>
       Email error
     </small>
   </div>
@@ -15,5 +15,4 @@
       Confirm error
     </small>
   </div>
-
 </fieldset>
