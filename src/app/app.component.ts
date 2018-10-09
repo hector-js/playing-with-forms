@@ -12,7 +12,7 @@ import { AppNavigationService } from './core/services/app-navigation/app-navigat
 export class AppComponent implements OnInit {
 
   public nextPage: string;
-  title = 'Welcome!';
+  title = 'PLAYING WITH ANGULAR';
 
   constructor(public router: Router,
   public appNavigationService: AppNavigationService) {
