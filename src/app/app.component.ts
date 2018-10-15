@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   public appNavigationService: AppNavigationService,
   public metaService: Meta) {
     const baseUrl = window.location.protocol + '//' + window.location.hostname;
-    const imageUrl = baseUrl + '/assets/Icon-hjs.png';
+    const imageUrl = baseUrl + '/assets/icon-meta.png';
     metaService.addTag( { property: 'og:image', content: imageUrl } );
   }
   ngOnInit() {
