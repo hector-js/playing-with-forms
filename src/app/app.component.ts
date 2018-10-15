@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   public metaService: Meta) {
     const baseUrl = window.location.protocol + '//' + window.location.hostname;
     const imageUrl = baseUrl + '/assets/icon-meta.png';
-    metaService.addTag( { property: 'og:image', content: imageUrl } );
+    metaService.addTag( { property: 'og:image:secure_url', content: imageUrl } );
   }
   ngOnInit() {
     this.appNavigationService.subscribeToEvents();
