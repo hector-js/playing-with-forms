@@ -1,4 +1,4 @@
-PLAYING WITH FORMS
+PLAYING WITH FORMS ANGULAR 7
 =================
 The title describes the project  by itself, *playing with forms* in Angular *6* for a *multi page* application!! :)
 
