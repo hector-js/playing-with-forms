@@ -1,8 +1,8 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
 import { PageFourService } from '../../service/page-four.service';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { emailsValidator } from '../../../catalog/email-group/utilities/validators/emails-validator';
 import { IEmails } from '../../../catalog/email-group/utilities/models/emails';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-page-four',
