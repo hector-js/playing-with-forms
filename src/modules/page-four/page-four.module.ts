@@ -5,6 +5,7 @@ import { PageFourRoutingModule } from './page-four-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DobModule } from '../catalog/dob/dob.module';
 import { EmailGroupModule } from '../catalog/email-group/email-group.module';
+import { YesNoModule } from '../catalog/yes-no/yes-no.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { EmailGroupModule } from '../catalog/email-group/email-group.module';
     DobModule,
     EmailGroupModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    YesNoModule
   ],
   declarations: [
     PageFourComponent

@@ -5,10 +5,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { OnInit, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-wrapper',
   template:
     `<form [formGroup]="form">
-      <app-dob data-qa="dobContainer" formControlName="emailsProperty"></app-dob>
+      <app-emails-group data-qa="dobContainer" formControlName="emailsProperty"></app-emails-group>
     </form>`,
 })
 export class WrapperComponent implements OnInit {
@@ -52,7 +51,7 @@ describe('EmailsGroupComponent', () => {
     fixture.detectChanges();
   });
 
-  fdescribe('emails group structure', () => {
+  describe('emails group structure', () => {
 
     it('should contain email input', () => {
       expect(nativeElement.querySelector(byDataQa('email'))).toBeTruthy();

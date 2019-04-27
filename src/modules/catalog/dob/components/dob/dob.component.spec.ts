@@ -29,7 +29,7 @@ export class WrapperComponent implements OnInit {
 
 }
 
-fdescribe('DobComponent', () => {
+describe('DobComponent', () => {
   let component: WrapperComponent;
   let fixture: ComponentFixture<WrapperComponent>;
   let nativeElement: any;
@@ -112,7 +112,7 @@ fdescribe('DobComponent', () => {
       fixture.detectChanges();
     });
 
-    fdescribe('touched status', () => {
+    describe('touched status', () => {
 
       it('should be false by default', () => {
         expect(component.form.controls.dobProperty.touched).toBeFalsy();

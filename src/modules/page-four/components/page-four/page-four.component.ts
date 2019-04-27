@@ -23,7 +23,8 @@ export class PageFourComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       dob: [[undefined, undefined, undefined], [Validators.required]],
-      emails: [this.emailGroup]
+      emails: [this.emailGroup],
+      yesNo: undefined
     });
     this.form.valueChanges.subscribe(() => {
       if (this.form.valid && this.errorForm) {
@@ -63,5 +64,6 @@ export class PageFourComponent implements OnInit {
 
   get dob() { return this.form.get('dob'); }
   get emails() { return this.form.get('emails'); }
+  get yesNo() { return this.form.get('yesNo'); }
 
 }

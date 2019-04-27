@@ -90,6 +90,40 @@
   </div>
 </section>
 
+<section class="field-16-bootom">
+  <div class="document container">
+    <fieldset>
+      <legend class="center" data-qa="pageFour">YES / NO Button</legend>
+      <p class="center">(controlValueAccessor)</p>
+      <form [formGroup]="form">
+        <app-yes-no formControlName="yesNo" ></app-yes-no>
+        <div class="field-16-top">
+          <section class="box-info">
+            <div class="center">
+              <b>Valid (form):</b> {{form.valid}}
+            </div>
+            <div class="center">
+              <b>Valid (valid):</b> {{yesNo.valid}}
+            </div>
+            <div class="center">
+              <b>Form values:</b> {{yesNo.value}}
+            </div>
+            <div class="center">
+              <b>Touched:</b> {{yesNo.touched}}
+            </div>
+            <div class="center">
+              <b>Pristine:</b> {{yesNo.pristine}}
+            </div>
+            <div class="center">
+              <b>Dirty:</b> {{yesNo.dirty}}
+            </div>
+          </section>
+        </div>
+      </form>
+    </fieldset>
+  </div>
+</section>
+
 <div *ngIf="errorForm" class="alert alert-danger">
   <small>
     Form not completed

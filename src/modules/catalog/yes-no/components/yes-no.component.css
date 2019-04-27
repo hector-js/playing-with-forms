@@ -1,0 +1,20 @@
+.yes-no-button{
+    border-color: grey;
+    background: transparent;
+    height: 60px;
+    width: 100px;
+    border-radius: 5px;
+    margin: 10px;
+    border-width: 3px;
+    cursor: pointer;
+}
+
+.yes-no-button:focus{
+    border-width: 5px;
+}
+
+.yes-no-focus{
+    border-width: 3px;
+    background: seagreen ;
+    color: white;
+}
