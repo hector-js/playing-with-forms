@@ -38,6 +38,7 @@
     "path": "^0.12.7",
     "rxjs": "^6.5.1",
     "tslint-angular": "^1.1.2",
+    "fstream": ">=1.0.12",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
