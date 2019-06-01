@@ -17,7 +17,7 @@ export class SelectorListComponent extends BaseForm implements OnInit {
 
   @Input() itemsToDisplay;
   @Input() model: Autocomplete;
-  @ViewChild('itemsContainer') public itemsContainer: ElementRef;
+  @ViewChild('itemsContainer', {static: true}) public itemsContainer: ElementRef;
 
   arrayItems = [];
 

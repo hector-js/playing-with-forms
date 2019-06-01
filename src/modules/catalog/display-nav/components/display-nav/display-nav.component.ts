@@ -9,8 +9,8 @@ export class DisplayNavComponent implements OnInit {
 
   stage: number | string;
 
-  @ViewChild('circle') private circle: any;
-  @ViewChild('text') private text: any;
+  @ViewChild('circle', {static: true}) private circle: any;
+  @ViewChild('text', {static: true}) private text: any;
 
   constructor() { }
 
