@@ -39,7 +39,7 @@
     "rxjs": "^6.5.2",
     "tslint-angular": "^1.1.2",
     "fstream": ">=1.0.12",
-    "zone.js": "^0.9.1"
+    "zone.js": "^0.8.29"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.800.1",
