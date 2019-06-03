@@ -13,19 +13,11 @@ export class TestWrapperComponent implements OnInit {
   counter:  any;
   array: string[];
 
-  @ViewChild('comp') comp: any;
+  @ViewChild('comp', {static: true}) comp: any;
 
   ngOnInit() {
     this.counter = 0;
   }
-
-  // count() {
-  //   this.counter++;
-  // }
-
-  // changeColor() {
-  //   this.array = ['yellow', 'white'];
-  // }
 }
 
 describe('DisplayNavComponent', () => {
