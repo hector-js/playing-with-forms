@@ -40,7 +40,7 @@
     "tslint-angular": "^1.1.2",
     "fstream": ">=1.0.12",
     "zone.js": "^0.8.29",
-    "set-value": ">=2.0.1"
+    "set-value": ">=4.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.800.1",
